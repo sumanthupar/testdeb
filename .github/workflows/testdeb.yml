@@ -35,7 +35,10 @@ jobs:
           oidc-provider-name: destgithub
           custom-server-id: summain
           version: 2.72.4
-      
+
+      - name: list jf
+        run: |
+          jf c s
       - name: Download file status.txt from repo
         run: |
           echo "${{ toJSON(steps.setup-cli-main.outputs) }}"
