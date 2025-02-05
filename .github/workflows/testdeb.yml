@@ -25,17 +25,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: 'refs/heads/main'
-=
-        
+
       - name: Setup JFrog CLI for SAAS main
         uses: jfrog/setup-jfrog-cli@v4
         id: setup-cli-main
         env:  
-          JF_URL: ${{ env.MAINJF_URL }}
+          JF_URL: "https://psblr.jfrog.io/"
         with:
           oidc-provider-name: destgithub
-          custom-server-id: ${{ env.jpdMain }}
-          version: ${{ env.JFCliVersion }}
+          custom-server-id: summain
+          version: 2.72.4
       
       - name: Download file status.txt from repo
         run: |
