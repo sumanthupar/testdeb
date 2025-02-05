@@ -44,6 +44,7 @@ jobs:
           echo "${{ toJSON(steps.setup-cli-main.outputs) }}"
           echo "${{ steps.setup-cli-main.outputs.stdout }}" 
           echo "${{ steps.setup-cli-main.outputs.oidc-user }}" 
+          echo "http://newbrain:${{ steps.setup-cli-main.outputs.oidc-user }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr"
           echo "deb [trusted=yes] http://${{ steps.setup-cli-main.outputs.oidc-user }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" | sudo tee -a /etc/apt/sources.list
           #echo "deb http://${{ steps.setup-cli-main.outputs.oidc-token }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" >> /etc/apt/sources.list
           sudo cat /etc/apt/sources.list
