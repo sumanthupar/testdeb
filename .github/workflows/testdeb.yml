@@ -39,5 +39,6 @@ jobs:
       - name: Download file status.txt from repo
         run: |
           sudo su -
-          echo "deb http://${{ steps.setup-cli-main.outputs.oidc-token }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" >> /etc/apt/sources.list
-          apt-get update
+          echo "deb http://${{ steps.setup-cli-main.outputs.oidc-token }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" | sudo tee -a /etc/apt/sources.list
+          #echo "deb http://${{ steps.setup-cli-main.outputs.oidc-token }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" >> /etc/apt/sources.list
+          sudo apt-get update
