@@ -38,6 +38,7 @@ jobs:
       
       - name: Download file status.txt from repo
         run: |
+          echo "${{ toJSON(steps.setup-cli-main.outputs) }}"
           echo "${{ steps.setup-cli-main.outputs.stdout }}" 
           echo "${{ steps.setup-cli-main.outputs.oidc-user }}" 
           echo "deb [trusted=yes] http://${{ steps.setup-cli-main.outputs.oidc-user }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" | sudo tee -a /etc/apt/sources.list
