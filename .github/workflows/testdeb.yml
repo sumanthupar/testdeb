@@ -38,7 +38,7 @@ jobs:
       
       - name: Download file status.txt from repo
         run: |
-          sudo su -
-          echo "deb [trusted=yes] http://aaa:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" | sudo tee -a /etc/apt/sources.list
+          echo "${{ steps.setup-cli-main.outputs.stdout }}" 
+          echo "deb [trusted=yes] http://${{ steps.setup-cli-main.outputs.oidc }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" | sudo tee -a /etc/apt/sources.list
           #echo "deb http://${{ steps.setup-cli-main.outputs.oidc-token }}:${{ steps.setup-cli-main.outputs.oidc-token }}@psblr.jfrog.io/artifactory/newdeb-virt bookworm main contrib" >> /etc/apt/sources.list
           sudo apt-get update --allow-insecure-repositories
